@@ -1,3 +1,113 @@
-<h1>19920199</h1>
-<h1>powerd by metasploit</h1>
-<h1>if you here you are donkey</h1>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malware Terminal</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #000;
+            font-family: 'Courier New', monospace;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #00ff00;
+        }
+        h1 {
+            font-size: 4em;
+            margin: 0;
+            text-align: center;
+            color: #ff0000;
+            text-shadow: 0 0 10px #ff0000;
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        .terminal {
+            width: 80%;
+            max-width: 800px;
+            height: 300px;
+            background: #0a0a0a;
+            border: 2px solid #00ff00;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 0 20px #00ff00;
+            overflow: hidden;
+        }
+        .prompt {
+            color: #00ff00;
+            font-weight: bold;
+        }
+        .output {
+            color: #ff0000;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .cursor {
+            display: inline-block;
+            background: #00ff00;
+            width: 10px;
+            height: 18px;
+            animation: blink 1s infinite;
+        }
+    </style>
+</head>
+<body>
+    <h1>¡MUGGLE!</h1>
+    
+    <div class="terminal">
+        <div style="color: #00ff00; margin-bottom: 10px;">
+            C:\malware&gt; <span class="prompt">malware.exe</span>
+        </div>
+        <div class="output">
+            [+] Iniciando malware...<br>
+            [+] <span style="color: #ffff00;">¡EL MALWARE ESTÁ FUNCIONANDO!</span><br>
+            [+] Conexión establecida con servidor C2<br>
+            [+] Extrayendo datos: 100% ✓<br>
+            [+] Encriptando archivos: 100% ✓<br>
+            [+] Persistencia establecida ✓<br>
+            [+] <span style="color: #ff00ff;">¡SISTEMA COMPROMETIDO!</span>
+        </div>
+        <div style="margin-top: 10px;">
+            C:\malware&gt; <span class="cursor">_</span>
+        </div>
+    </div>
+
+    <script>
+        // Efecto de escritura en el terminal
+        const messages = [
+            "[+] Enviando keystrokes a atacante...",
+            "[+] Grabando webcam: ON",
+            "[+] Micrófono activado",
+            "[!] ¡NO CIERRES ESTA VENTANA!",
+            "[+] Bitcoin wallet detectada ✓"
+        ];
+        
+        let index = 0;
+        const terminalOutput = document.querySelector('.terminal .output');
+        const cursor = document.querySelector('.cursor');
+        
+        function typeMessage() {
+            if (index < messages.length) {
+                const newLine = document.createElement('div');
+                newLine.textContent = messages[index];
+                newLine.style.color = '#ffaa00';
+                terminalOutput.appendChild(newLine);
+                index++;
+                setTimeout(typeMessage, 2000);
+            }
+        }
+        
+        setTimeout(typeMessage, 3000);
+    </script>
+</body>
+</html>
